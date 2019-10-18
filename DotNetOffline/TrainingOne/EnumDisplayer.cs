@@ -26,19 +26,19 @@ namespace TrainingOne
             }
         }
 
-        public void DisplaySortedColors()
+        public void DisplayColors()
         { 
-                List<Colors> arrayOfColors = new List<Colors>();
-                foreach (Colors i in Enum.GetValues(typeof(Colors)))
-                {
-                    arrayOfColors.Add(i);
-                }
-                arrayOfColors.Sort();
+            List<Colors> arrayOfColors = new List<Colors>();
+            foreach (Colors i in Enum.GetValues(typeof(Colors)))
+            {
+                arrayOfColors.Add(i);
+            }
+            arrayOfColors.Sort();
 
-                foreach (var i in arrayOfColors)
-                {
-                    Printer.Print(String.Format($"{0}: {1}", i, (int)i));
-                }
+            foreach (var i in arrayOfColors)
+            {
+                Printer.Print($"{i}: {((int)i).ToString()}");
+            }
         }
 
         public void DisplayLongRange()
@@ -48,7 +48,6 @@ namespace TrainingOne
             Printer.Print("Min long range:");
             Printer.Print(((long)LongRange.Min).ToString());
         }
-
     }
 
     enum LongRange : long

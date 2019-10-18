@@ -51,10 +51,10 @@ namespace TrainingThree
                 }
             }
 
-            catch
+            catch(Exception e)
             {
-                Printer.Print("Wrong directory");
-                Logger.Log("Wrong directory");
+                Printer.Print(e.Message);
+                Logger.Log(e.Message);
             }
         }
 

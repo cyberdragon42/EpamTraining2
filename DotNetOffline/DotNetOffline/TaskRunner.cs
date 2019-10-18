@@ -11,7 +11,7 @@ namespace Runner
 {
     public class TaskRunner
     {
-        public void TaskPerson()
+        public void RunTaskPerson()
         {
             Console.WriteLine("Task1: Person");
 
@@ -45,7 +45,7 @@ namespace Runner
             }
         }
 
-        public void TaskRectangle()
+        public void RunTaskRectangle()
         {
             Console.WriteLine("Task2: rectangle");
 
@@ -68,7 +68,7 @@ namespace Runner
             }
         }
 
-        public void TaskMonthEnum()
+        public void RunTaskMonthEnum()
         {
             Console.WriteLine("Task3: Month enum");
             EnumDisplayer enumDisplayer = new EnumDisplayer();
@@ -85,20 +85,21 @@ namespace Runner
             }
         }
 
-        public void TaskColorsEnum()
+        public void RunTaskColorsEnum()
         {
-            //EnumDisplayer enumDisplayer = new EnumDisplayer();
-            //enumDisplayer.DisplaySortedColors();
+            Console.WriteLine("Task4: sort colors");
+            EnumDisplayer enumDisplayer = new EnumDisplayer();
+            enumDisplayer.DisplayColors();
         }
 
-        public void TaskLongRangeEnum()
+        public void RunTaskLongRangeEnum()
         {
             Console.WriteLine("Task5: Long range enum");
             EnumDisplayer enumDisplayer = new EnumDisplayer();
             enumDisplayer.DisplayLongRange();
         }
 
-        public void TaskStackOverflowAndIndexOutOfRangeExceptions()
+        public void RunTaskStackOverflowAndIndexOutOfRangeExceptions()
         {
             Console.WriteLine("Task6: exceptions");
             ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator();
@@ -106,11 +107,13 @@ namespace Runner
             exceptionsViewer.GenerateInfiniteRecursion(8);
         }
 
-        public void TaskArgumentExceptions()
+        public void RunTaskArgumentExceptions()
         {
             Console.WriteLine("Task7: argument exception");
             ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator();
+            Console.WriteLine("Please, enter a: ");
             string aFromConsole = Console.ReadLine();
+            Console.WriteLine("Please, enter b: ");
             string bFromConsole = Console.ReadLine();
             int convertedA = 0;
             int convertedB = 0;
@@ -124,9 +127,11 @@ namespace Runner
             }
         }
 
-        public void TaskVisualiseDirectory()
+        public void RunTaskVisualiseDirectory()
         {
+            Console.WriteLine("Task8: directory visualiser");
             DirectoryVisualiser directoryVisualiser = new DirectoryVisualiser();
+            Console.WriteLine("Please, enter directory: ");
             string directoryFromConsole = Console.ReadLine();
             directoryVisualiser.DirectoryPath = directoryFromConsole;
             directoryVisualiser.GetListOfFiles();

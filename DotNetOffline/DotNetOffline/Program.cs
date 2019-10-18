@@ -16,10 +16,9 @@ namespace Runner
         {
             TaskRunner taskRunner = new TaskRunner();
             MyLogger myLogger = new MyLogger();
-
             try
             {
-                taskRunner.TaskPerson();
+                taskRunner.RunTaskPerson();
             }
             catch (ArgumentException e) when (e.ParamName == "age")
             {
@@ -28,7 +27,7 @@ namespace Runner
             }
             try
             {
-                taskRunner.TaskRectangle();
+                taskRunner.RunTaskRectangle();
             }
             catch (ArgumentException e) when (e.ParamName == "width")
             {
@@ -43,8 +42,10 @@ namespace Runner
 
             try
             {
-                taskRunner.TaskMonthEnum();
-                taskRunner.TaskLongRangeEnum();
+                taskRunner.RunTaskMonthEnum();
+                taskRunner.RunTaskColorsEnum();
+                taskRunner.RunTaskLongRangeEnum();
+                taskRunner.RunTaskStackOverflowAndIndexOutOfRangeExceptions();
             }
 
             catch (IndexOutOfRangeException e)
@@ -56,6 +57,11 @@ namespace Runner
             {
                 Console.WriteLine("Stack overflow exception");
                 myLogger.Write(e.Message);
+            }
+
+            try
+            {
+                taskRunner.RunTaskArgumentExceptions();
             }
             catch (ArgumentException e) when (e.ParamName == "a")
             {
@@ -69,7 +75,18 @@ namespace Runner
                 myLogger.Write(e.Message);
             }
 
-            myLogger.Read();
+            try
+            {
+                taskRunner.RunTaskVisualiseDirectory();
+            }
+
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                myLogger.Write(e.Message);
+            }
+
+            //myLogger.Read();
             Console.ReadKey();
         }
     }
