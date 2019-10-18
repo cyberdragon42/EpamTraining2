@@ -30,13 +30,14 @@ namespace TrainingOne
         {
             Name = name;
             Surname = surname;
-            _age = age;
             Printer = new ConsolePrinter();
+            if (age <= 0)
+                throw new ArgumentException("Age should be greater than 0","age");
+            _age = age;
         }
 
         public void CompareAges(int n)
         {
-            //return Age > n ? String.Format("{0} {1} older than {2}", Name, Surname, n) : String.Format("{0} {1} not older than {2}", Name, Surname, n);
             if (Age > n)
                 Printer.Print(String.Format("{0} {1} older than {2}", Name, Surname, n));
             else if (Age < n)

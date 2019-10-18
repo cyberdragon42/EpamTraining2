@@ -27,9 +27,18 @@ namespace TrainingOne
         }
 
         public void DisplaySortedColors()
-        {
-            Colors magenta = Colors.Magenta;
-            magenta.DisplaySortedColors();
+        { 
+                List<Colors> arrayOfColors = new List<Colors>();
+                foreach (Colors i in Enum.GetValues(typeof(Colors)))
+                {
+                    arrayOfColors.Add(i);
+                }
+                arrayOfColors.Sort();
+
+                foreach (var i in arrayOfColors)
+                {
+                    Printer.Print(String.Format($"{0}: {1}", i, (int)i));
+                }
         }
 
         public void DisplayLongRange()

@@ -13,9 +13,9 @@ namespace TrainingThree
         public void Log(string message)
         {
             //write in logfile
-            using (StreamWriter sw = new StreamWriter(LogFilePath, false, System.Text.Encoding.Default))
+            using (StreamWriter streamWriter = new StreamWriter(LogFilePath, true, System.Text.Encoding.Default))
             {
-                sw.Write(message);
+                streamWriter.Write(DateTime.Now+" "+message);
             }
         }
     }

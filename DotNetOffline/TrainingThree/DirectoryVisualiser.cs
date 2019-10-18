@@ -31,7 +31,7 @@ namespace TrainingThree
             try
             {
                 DirectoryInfo directoryInfo = new DirectoryInfo(DirectoryPath);
-                DirectoryInfo[] subDerictiries = directoryInfo.GetDirectories();
+                DirectoryInfo[] subDirectories = directoryInfo.GetDirectories();
                 Printer.Print("files:");
                 FileInfo[] files = directoryInfo.GetFiles();
                 foreach (var file in files)
@@ -39,7 +39,7 @@ namespace TrainingThree
                     Printer.Print(file.Name);
                 }
 
-                foreach (var directory in subDerictiries)
+                foreach (var directory in subDirectories)
                 {
                     Printer.Print("subdirectory:" + directory.Name);
                     Printer.Print("subdirectory files:");

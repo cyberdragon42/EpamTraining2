@@ -8,12 +8,7 @@ namespace TrainingOne
 {
     public static class EnumExtension
     {
-        static IPrinter Printer;
-        static EnumExtension()
-        {
-            Printer = new ConsolePrinter();
-        }
-        public static void DisplaySortedColors(this Colors colors)
+        public static List<string> DisplaySortedColors(this Colors colors)
         {
             List<Colors> arrayOfColors = new List<Colors>();
             foreach (Colors i in Enum.GetValues(typeof(Colors)))
@@ -22,10 +17,13 @@ namespace TrainingOne
             }
             arrayOfColors.Sort();
 
+            List<string> arrayOfSortedColors = new List<string>();
+
             foreach (var i in arrayOfColors)
             {
-                Printer.Print(String.Format($"{0}: {1}",i,(int)i));
+                arrayOfSortedColors.Add(String.Format($"{0}: {1}", i, (int)i));
             }
+            return arrayOfSortedColors;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace TrainingOne
     public interface ISize
     {
         double Width { get; set; }
-        double Heigh { get; set; }
+        double Height { get; set; }
         void Perimeter();
     }
 }
