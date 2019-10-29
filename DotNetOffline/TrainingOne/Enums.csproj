@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC614416-BEC5-4875-8FF9-AB41C997D7D1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DotNetOffline</RootNamespace>
-    <AssemblyName>DotNetOffline</AssemblyName>
+    <ProjectGuid>{14263468-06CC-42FC-89A2-60B7F71A1FD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrainingOne</RootNamespace>
+    <AssemblyName>TrainingOne</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,44 +39,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="TrainingFour">
-      <HintPath>..\TrainingFour\bin\Debug\TrainingFour.dll</HintPath>
-    </Reference>
-    <Reference Include="TrainingOne">
-      <HintPath>..\TrainingOne\bin\Debug\TrainingOne.dll</HintPath>
-    </Reference>
-    <Reference Include="TrainingThree">
-      <HintPath>..\TrainingThree\bin\Debug\TrainingThree.dll</HintPath>
-    </Reference>
-    <Reference Include="TrainingTwo">
-      <HintPath>..\TrainingTwo\bin\Debug\TrainingTwo.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="EnumDisplayer.cs" />
+    <Compile Include="EnumExtension.cs" />
+    <Compile Include="ICoordinates.cs" />
+    <Compile Include="ISize.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="TaskRunner.cs" />
+    <Compile Include="Rectangle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Excel\Excel.csproj">
-      <Project>{31c7645a-7671-47e4-ae09-4870140b16e4}</Project>
-      <Name>Excel</Name>
+    <ProjectReference Include="..\TrainingFour\ServiceClasses.csproj">
+      <Project>{bff686a6-8086-4091-adbd-fb6fe87ae2d5}</Project>
+      <Name>ServiceClasses</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

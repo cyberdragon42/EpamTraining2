@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrainingOne;
-using TrainingThree;
-using TrainingTwo;
-using TrainingFour;
+using Enums;
+using ServiceClasses;
+using Excel;
 
 namespace Runner
 {
@@ -18,72 +17,78 @@ namespace Runner
             MyLogger myLogger = new MyLogger();
             try
             {
-                taskRunner.RunTaskPerson();
-            }
-            catch (ArgumentException e) when (e.ParamName == "age")
-            {
-                Console.WriteLine("Argument exception, age should be greater than 0");
-                myLogger.Write(e.Message);
-            }
-            try
-            {
-                taskRunner.RunTaskRectangle();
-            }
-            catch (ArgumentException e) when (e.ParamName == "width")
-            {
-                Console.WriteLine("Argument exception, width should be greater than 0");
-                myLogger.Write(e.Message);
-            }
-            catch (ArgumentException e) when (e.ParamName == "height")
-            {
-                Console.WriteLine("Argument exception, height should be greater than 0");
-                myLogger.Write(e.Message);
-            }
 
-            try
-            {
-                taskRunner.RunTaskMonthEnum();
-                taskRunner.RunTaskColorsEnum();
-                taskRunner.RunTaskLongRangeEnum();
-                taskRunner.RunTaskStackOverflowAndIndexOutOfRangeExceptions();
-            }
+                try
+                {
+                    taskRunner.RunTaskPerson();
+                }
+                catch (ArgumentException e) when (e.ParamName == "age")
+                {
+                    Console.WriteLine("Argument exception, age should be greater than 0");
+                    myLogger.Log(e.Message);
+                }
+                try
+                {
+                    taskRunner.RunTaskRectangle();
+                }
+                catch (ArgumentException e) when (e.ParamName == "width")
+                {
+                    Console.WriteLine("Argument exception, width should be greater than 0");
+                    myLogger.Log(e.Message);
+                }
+                catch (ArgumentException e) when (e.ParamName == "height")
+                {
+                    Console.WriteLine("Argument exception, height should be greater than 0");
+                    myLogger.Log(e.Message);
+                }
 
-            catch (IndexOutOfRangeException e)
-            {
-                Console.WriteLine("Index out of range exception");
-                myLogger.Write(e.Message);
-            }
-            catch (StackOverflowException e)
-            {
-                Console.WriteLine("Stack overflow exception");
-                myLogger.Write(e.Message);
-            }
+                try
+                {
+                    taskRunner.RunTaskMonthEnum();
+                    taskRunner.RunTaskColorsEnum();
+                    taskRunner.RunTaskLongRangeEnum();
+                    taskRunner.RunTaskStackOverflowAndIndexOutOfRangeExceptions();
+                }
 
-            try
-            {
-                taskRunner.RunTaskArgumentExceptions();
-            }
-            catch (ArgumentException e) when (e.ParamName == "a")
-            {
-                Console.WriteLine("Argument exception, a is less than 0");
-                myLogger.Write(e.Message);
-            }
+                catch (IndexOutOfRangeException e)
+                {
+                    Console.WriteLine("Index out of range exception");
+                    myLogger.Log(e.Message);
+                }
+                catch (StackOverflowException e)
+                {
+                    Console.WriteLine("Stack overflow exception");
+                    myLogger.Log(e.Message);
+                }
 
-            catch (ArgumentException e) when (e.ParamName == "b")
-            {
-                Console.WriteLine("Argument exception, b is greater than 0");
-                myLogger.Write(e.Message);
-            }
+                try
+                {
+                    taskRunner.RunTaskArgumentExceptions();
+                }
+                catch (ArgumentException e) when (e.ParamName == "a")
+                {
+                    Console.WriteLine("Argument exception, a is less than 0");
+                    myLogger.Log(e.Message);
+                }
 
-            try
-            {
+                catch (ArgumentException e) when (e.ParamName == "b")
+                {
+                    Console.WriteLine("Argument exception, b is greater than 0");
+                    myLogger.Log(e.Message);
+                }
+
                 taskRunner.RunTaskVisualiseDirectory();
-            }
 
-            catch(Exception e)
+                ExcelReader excelReader = new ExcelReader();
+                excelReader.ReadCollections();
+                Console.WriteLine("Collections are read");
+                excelReader.DisplayCollections();
+                Console.WriteLine("Collections are displayed");
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                myLogger.Write(e.Message);
+                myLogger.Log(e.Message);
             }
 
             //myLogger.Read();

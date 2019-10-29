@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using ServiceClasses;
 
-namespace TrainingThree
+namespace Directories
 {
     public class DirectoryVisualiser
     {
@@ -17,12 +18,12 @@ namespace TrainingThree
         public DirectoryVisualiser()
         {
             Printer = new ConsolePrinter();
-            Logger = new TextFileLogger();
+            Logger = new MyLogger();
         }
         public DirectoryVisualiser(string directoryPath)
         {
             Printer = new ConsolePrinter();
-            Logger = new TextFileLogger();
+            Logger = new MyLogger();
             DirectoryPath = directoryPath;
         }
         #endregion
@@ -30,10 +31,10 @@ namespace TrainingThree
         {
             try
             {
-                DirectoryInfo directoryInfo = new DirectoryInfo(DirectoryPath);
-                DirectoryInfo[] subDirectories = directoryInfo.GetDirectories();
+                DirectoryInfo mainDirectory = new DirectoryInfo(DirectoryPath);
+                DirectoryInfo[] subDirectories = mainDirectory.GetDirectories();
                 Printer.Print("files:");
-                FileInfo[] files = directoryInfo.GetFiles();
+                FileInfo[] files = mainDirectory.GetFiles();
                 foreach (var file in files)
                 {
                     Printer.Print(file.Name);

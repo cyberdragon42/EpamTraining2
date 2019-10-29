@@ -4,15 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using ServiceClasses;
 
-namespace TrainingThree
+namespace Directories
 {
     public class FileSearcher
     {
         public string DirectoryPath { get; set; }
         private List<FileInfo> MatchingFiles;
-        IPrinter Printer;
-        ILogger Logger;
+        public IPrinter Printer;
+        public ILogger Logger;
+
+        public FileSearcher()
+        {
+            Printer = new ConsolePrinter();
+            Logger = new MyLogger();
+            MatchingFiles = new List<FileInfo>();
+        }
 
         public void SearchMatchingFiles(string nameFragment)
         {

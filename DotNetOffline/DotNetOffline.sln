@@ -5,13 +5,19 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "DotNetOffline\Runner.csproj", "{AC614416-BEC5-4875-8FF9-AB41C997D7D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingOne", "TrainingOne\TrainingOne.csproj", "{14263468-06CC-42FC-89A2-60B7F71A1FD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enums", "TrainingOne\Enums.csproj", "{14263468-06CC-42FC-89A2-60B7F71A1FD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingTwo", "TrainingTwo\TrainingTwo.csproj", "{737F56B5-BE19-4893-9CB8-BF28CDE0ED11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "TrainingTwo\Exceptions.csproj", "{737F56B5-BE19-4893-9CB8-BF28CDE0ED11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingThree", "TrainingThree\TrainingThree.csproj", "{3573B14D-6E5E-4A64-A11D-3773D0E56769}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Directories", "TrainingThree\Directories.csproj", "{3573B14D-6E5E-4A64-A11D-3773D0E56769}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingFour", "TrainingFour\TrainingFour.csproj", "{BFF686A6-8086-4091-ADBD-FB6FE87AE2D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceClasses", "TrainingFour\ServiceClasses.csproj", "{BFF686A6-8086-4091-ADBD-FB6FE87AE2D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization", "TrainingFive\Serialization.csproj", "{43CE1906-AE80-4D63-820D-F5C3B795BDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCop", "TrainingSix\StyleCop.csproj", "{A5DEA0B4-1BD6-4E24-B58A-FC1A663BA2B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel", "Excel\Excel.csproj", "{31C7645A-7671-47E4-AE09-4870140B16E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{BFF686A6-8086-4091-ADBD-FB6FE87AE2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFF686A6-8086-4091-ADBD-FB6FE87AE2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFF686A6-8086-4091-ADBD-FB6FE87AE2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43CE1906-AE80-4D63-820D-F5C3B795BDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CE1906-AE80-4D63-820D-F5C3B795BDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CE1906-AE80-4D63-820D-F5C3B795BDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CE1906-AE80-4D63-820D-F5C3B795BDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5DEA0B4-1BD6-4E24-B58A-FC1A663BA2B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DEA0B4-1BD6-4E24-B58A-FC1A663BA2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DEA0B4-1BD6-4E24-B58A-FC1A663BA2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DEA0B4-1BD6-4E24-B58A-FC1A663BA2B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31C7645A-7671-47E4-AE09-4870140B16E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31C7645A-7671-47E4-AE09-4870140B16E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31C7645A-7671-47E4-AE09-4870140B16E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31C7645A-7671-47E4-AE09-4870140B16E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

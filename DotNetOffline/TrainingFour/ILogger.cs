@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainingFour
+namespace ServiceClasses
 {
     public interface ILogger
     {
         void Read();
-        void Write(string message);
+        void Log(string message);
     }
 }
