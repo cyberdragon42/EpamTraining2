@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCop", "TrainingSix\Sty
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel", "Excel\Excel.csproj", "{31C7645A-7671-47E4-AE09-4870140B16E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{31C7645A-7671-47E4-AE09-4870140B16E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31C7645A-7671-47E4-AE09-4870140B16E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31C7645A-7671-47E4-AE09-4870140B16E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
