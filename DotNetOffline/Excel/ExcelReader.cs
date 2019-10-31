@@ -12,6 +12,7 @@ namespace Excel
     public class ExcelReader
     {
         public IPrinter Printer;
+        public ExcelWriter excelWriter;
         public ILogger Logger;
         private string InputFilePath;
         private string OutputFilePath;
@@ -24,6 +25,7 @@ namespace Excel
         {
              Printer = new ConsolePrinter();
              Logger = new  MyLogger();
+             excelWriter = new ExcelWriter();
              FirstCollection = new HashSet<string>();
              SecondCollection = new HashSet<string>();
             try
@@ -119,34 +121,14 @@ namespace Excel
 
         public void DisplayIntoFile()
         {
-            MicrosoftExcel.Application excelApp = new MicrosoftExcel.Application();
-            MicrosoftExcel.Workbook excelWorkbook = excelApp.Workbooks.Add();
-            MicrosoftExcel.Worksheet excelWorksheet = (MicrosoftExcel.Worksheet)excelWorkbook.Sheets.Add();
-
             try
             {
-                int i = 1;
-                foreach (var cell in FirstCollection)
-                {
-                    excelWorksheet.Cells[i, FirstColumnNumber] = cell;
-                }
-
-                i = 1;
-                foreach (var cell in SecondCollection)
-                {
-                    excelWorksheet.Cells[i, SecondColumnNumber] = cell;
-                }
-
-                excelApp.ActiveWorkbook.SaveAs(OutputFilePath, MicrosoftExcel.XlFileFormat.xlWorkbookNormal);
-
-                excelWorkbook.Close();
-                excelApp.Quit();
+                excelWriter.WriteIntoExcelFile(FirstCollection, 1, OutputFilePath);
+                excelWriter.WriteIntoExcelFile(SecondCollection, 3, OutputFilePath);
             }
-
             catch(Exception e)
             {
-                Printer = new ConsolePrinter();
-                Logger = new MyLogger();
+                Logger.Log(e.Message);
             }
         }
     }
