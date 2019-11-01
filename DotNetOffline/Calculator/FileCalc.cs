@@ -9,7 +9,7 @@ using ServiceClasses;
 
 namespace Calculator
 {
-    public class FileCalc : Calc
+    public class FileCalc : ICalc
     {
         private double X;
         private double Y;

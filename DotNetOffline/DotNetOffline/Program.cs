@@ -17,11 +17,6 @@ namespace Runner
             MyLogger myLogger = new MyLogger();
             try
             {
-                ExcelReader excelReader = new ExcelReader();
-                excelReader.ReadCollections();
-                Console.WriteLine("Collections are read");
-                excelReader.DisplayCollections();
-                Console.WriteLine("Collections are displayed");
 
                 try
                 {
@@ -82,8 +77,9 @@ namespace Runner
                     myLogger.Log(e.Message);
                 }
 
+                taskRunner.RunTaskListsFromExcel();
+                taskRunner.RunTaskExcelDirectory();
                 taskRunner.RunTaskVisualiseDirectory();
-
             }
             catch (Exception e)
             {

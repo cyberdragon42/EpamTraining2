@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    public class ConsoleCalc:Calc
+    public class ConsoleCalc:ICalc
     {
         private double X;
         private double Y;

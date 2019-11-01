@@ -9,11 +9,10 @@ using ServiceClasses;
 
 namespace Excel
 {
-    public class ExcelReader
+    public class ExcelCollectionDisplayer: ICollectionReader, ICollectionWriter
     {
         public IPrinter Printer;
         public ExcelWriter excelWriter;
-        public ILogger Logger;
         private string InputFilePath;
         private string OutputFilePath;
         private int FirstColumnNumber;
@@ -21,10 +20,9 @@ namespace Excel
         private HashSet<string> FirstCollection;
         private HashSet<string> SecondCollection;
 
-        public ExcelReader()
+        public ExcelCollectionDisplayer()
         {
              Printer = new ConsolePrinter();
-             Logger = new  MyLogger();
              excelWriter = new ExcelWriter();
              FirstCollection = new HashSet<string>();
              SecondCollection = new HashSet<string>();
@@ -37,8 +35,7 @@ namespace Excel
             }
             catch(Exception e)
             {
-                Printer.Print(e.Message);
-                Logger.Log(e.Message);
+                throw new Exception(e.Message);
             }
         }
 
@@ -81,30 +78,38 @@ namespace Excel
             }
             catch (Exception e)
             {
-                Printer.Print(e.Message);
-                Logger.Log(e.Message);
+                throw new Exception(e.Message);
             }
 
         }
 
-        public void DisplayCollections()
+        public void WriteCollections()
         {
-            string wayOfDisplay = ConfigurationSettings.AppSettings["wayOfDisplay"];
-            switch(wayOfDisplay)
+            try
             {
-                case "console":
-                    DisplayOnConsole();
-                    break;
-                case "file":
-                    DisplayIntoFile();
-                    break;
-                default:
-                    Printer.Print("Collection can not be displayed");
-                    break;
+
+                string wayOfDisplay = ConfigurationSettings.AppSettings["wayOfDisplay"];
+                switch (wayOfDisplay)
+                {
+                    case "console":
+                        WriteCollectionsOnConsole();
+                        break;
+                    case "file":
+                        WriteCollectionsIntoFile();
+                        break;
+                    default:
+                        Printer.Print("Collection can not be displayed");
+                        break;
+                }
+            }
+
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
 
-        private void DisplayOnConsole()
+        public void WriteCollectionsOnConsole()
         {
             Printer.Print("first collection:");
             foreach (var cell in FirstCollection)
@@ -119,16 +124,16 @@ namespace Excel
             }
         }
 
-        public void DisplayIntoFile()
+        public void WriteCollectionsIntoFile()
         {
             try
             {
-                excelWriter.WriteIntoExcelFile(FirstCollection, 1, OutputFilePath);
-                excelWriter.WriteIntoExcelFile(SecondCollection, 3, OutputFilePath);
+                excelWriter.WriteIntoExcelFile(FirstCollection, FirstColumnNumber, OutputFilePath);
+                excelWriter.WriteIntoExcelFile(SecondCollection, SecondColumnNumber, OutputFilePath);
             }
             catch(Exception e)
             {
-                Logger.Log(e.Message);
+                throw new Exception(e.Message);
             }
         }
     }

@@ -9,7 +9,7 @@ using ServiceClasses;
 
 namespace Excel
 {
-    public class DirectoryReader
+    public class DirectoryCollectionDisplayer:ICollectionReader,ICollectionWriter
     {
         IPrinter Printer;
         ExcelWriter excelWriter;
@@ -22,7 +22,7 @@ namespace Excel
         private List<string> SecondFileList;
         private IEnumerable<string> DouplicateFiles;
 
-        public DirectoryReader()
+        public DirectoryCollectionDisplayer()
         {
             Printer = new ConsolePrinter();
             excelWriter = new ExcelWriter();
@@ -39,25 +39,32 @@ namespace Excel
 
             catch(Exception e)
             {
-
+                throw new Exception(e.Message);
             }
 
         }
 
         public void ReadCollections()
         {
-            DirectoryInfo firstDirectory = new DirectoryInfo(FirstDirectoryPath);
-            FileInfo[] firstFiles = firstDirectory.GetFiles();
-            foreach(var file in firstFiles)
+            try
             {
-                FirstFileList.Add(file.Name);
+                DirectoryInfo firstDirectory = new DirectoryInfo(FirstDirectoryPath);
+                FileInfo[] firstFiles = firstDirectory.GetFiles();
+                foreach (var file in firstFiles)
+                {
+                    FirstFileList.Add(file.Name);
+                }
+
+                DirectoryInfo secondDirectory = new DirectoryInfo(SecondDirectoryPath);
+                FileInfo[] secondFiles = secondDirectory.GetFiles();
+                foreach (var file in secondFiles)
+                {
+                    SecondFileList.Add(file.Name);
+                }
             }
-            
-            DirectoryInfo secondDirectory = new DirectoryInfo(SecondDirectoryPath);
-            FileInfo[] secondFiles = secondDirectory.GetFiles();
-            foreach (var file in secondFiles)
+            catch(Exception e)
             {
-                SecondFileList.Add(file.Name);
+                throw new Exception(e.Message);
             }
 
         }
@@ -80,24 +87,31 @@ namespace Excel
             DouplicateFiles = FirstFileList.Intersect(SecondFileList);
         }
 
-        public void DisplayCollections()
+        public void WriteCollections()
         {
-            string wayOfDisplay = ConfigurationSettings.AppSettings["wayOfDisplay"];
-            switch (wayOfDisplay)
+            try
             {
-                case "console":
-                    DisplayOnConsole();
-                    break;
-                case "file":
-                    DisplayIntoFile();
-                    break;
-                default:
-                    Printer.Print("Collection can not be displayed");
-                    break;
+                string wayOfDisplay = ConfigurationSettings.AppSettings["wayOfDisplay"];
+                switch (wayOfDisplay)
+                {
+                    case "console":
+                        WriteCollectionsOnConsole();
+                        break;
+                    case "file":
+                        WriteCollectionsIntoFile();
+                        break;
+                    default:
+                        Printer.Print("Collection can not be displayed");
+                        break;
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
 
-        public void DisplayOnConsole()
+        public void WriteCollectionsOnConsole()
         {
             Printer.Print("unique files from first directory:");
             foreach (var file in FirstUniqueFileList)
@@ -118,9 +132,18 @@ namespace Excel
             }
         }
 
-        public void DisplayIntoFile()
+        public void WriteCollectionsIntoFile()
         {
+            try
+            {
+                excelWriter.WriteIntoExcelFile(FirstUniqueFileList, 1, OutputFilePath);
+                excelWriter.WriteIntoExcelFile(SecondUniqueFileList, 2, OutputFilePath);
+            }
 
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

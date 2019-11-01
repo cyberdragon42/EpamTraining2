@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Directories;
 using Enums;
 using Exceptions;
+using Excel;
 
 namespace Runner
 {
@@ -135,6 +136,24 @@ namespace Runner
             string directoryFromConsole = Console.ReadLine();
             directoryVisualiser.DirectoryPath = directoryFromConsole;
             directoryVisualiser.GetListOfFiles();
+        }
+
+        public void RunTaskListsFromExcel()
+        {
+            Console.WriteLine("Excel collections displayer");
+            ExcelCollectionDisplayer excelCollectionDisplayer = new ExcelCollectionDisplayer();
+            excelCollectionDisplayer.ReadCollections();
+            excelCollectionDisplayer.WriteCollections();
+        }
+
+        public void RunTaskExcelDirectory()
+        {
+            Console.WriteLine("Directory excel displayer");
+            DirectoryCollectionDisplayer directoryCollectionDisplayer = new DirectoryCollectionDisplayer();
+            directoryCollectionDisplayer.ReadCollections();
+            directoryCollectionDisplayer.GetUniqueValues();
+            directoryCollectionDisplayer.GetDouplicates();
+            directoryCollectionDisplayer.WriteCollections();
         }
 
     }

@@ -45,9 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectoryReader.cs" />
-    <Compile Include="ExcelReader.cs" />
+    <Compile Include="DirectoryCollectionDisplayer.cs" />
+    <Compile Include="ExcelCollectionDisplayer.cs" />
     <Compile Include="ExcelWriter.cs" />
+    <Compile Include="ICollectionReader.cs" />
+    <Compile Include="ICollectionWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
