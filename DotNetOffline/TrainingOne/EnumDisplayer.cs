@@ -10,9 +10,9 @@ namespace Enums
     public class EnumDisplayer
     {
         IPrinter Printer;
-        public EnumDisplayer()
+        public EnumDisplayer(IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
         }
 
         public void DisplayMonth(int n)

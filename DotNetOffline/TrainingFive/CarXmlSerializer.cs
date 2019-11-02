@@ -19,15 +19,15 @@ namespace Serialization
         #endregion
 
         #region Constructors
-        public CarXmlSerializer()
+        public CarXmlSerializer(IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
             CarsToSerialize = new List<Car>();
         }
 
-        public CarXmlSerializer(string path)
+        public CarXmlSerializer(string path, IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
             CarsToSerialize = new List<Car>();
             Path = path;
         }

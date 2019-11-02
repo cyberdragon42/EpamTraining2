@@ -19,15 +19,15 @@ namespace Serialization
         #endregion
 
         #region Constructors
-        public CarBinarySerializer()
+        public CarBinarySerializer(IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
             CarsToSerialize = new List<Car>();
         }
 
-        public CarBinarySerializer(string path)
+        public CarBinarySerializer(string path, IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
             CarsToSerialize = new List<Car>();
             Path = path;
         }

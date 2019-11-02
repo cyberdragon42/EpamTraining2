@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}</ProjectGuid>
+    <ProjectGuid>{48F0A842-00D2-4D93-A02E-F627DA2F09FD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Calculator</RootNamespace>
-    <AssemblyName>Calculator</AssemblyName>
+    <RootNamespace>Reflection</RootNamespace>
+    <AssemblyName>Reflection</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,16 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICalc.cs" />
-    <Compile Include="ConsoleCalc.cs" />
-    <Compile Include="FileCalc.cs" />
+    <Compile Include="AssemblyInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TrainingFour\ServiceClasses.csproj">
-      <Project>{bff686a6-8086-4091-adbd-fb6fe87ae2d5}</Project>
-      <Name>ServiceClasses</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,9 +16,9 @@ namespace Serialization
         public List<Car> carsToDeserialize { get; set; }
         public string Path { get; set; }
 
-        public CarBinaryDeserilizer()
+        public CarBinaryDeserilizer(IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
         }
 
         public CarBinaryDeserilizer(string path)

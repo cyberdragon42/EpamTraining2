@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using ServiceClasses;
 
+
 namespace Directories
 {
     public class FileSearcher
@@ -15,10 +16,10 @@ namespace Directories
         public IPrinter Printer;
         public ILogger Logger;
 
-        public FileSearcher()
+        public FileSearcher(IPrinter printer, ILogger logger)
         {
-            Printer = new ConsolePrinter();
-            Logger = new MyLogger();
+            Printer = printer;
+            Logger = logger;
             MatchingFiles = new List<FileInfo>();
         }
 

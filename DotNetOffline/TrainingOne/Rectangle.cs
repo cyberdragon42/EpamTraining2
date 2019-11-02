@@ -39,13 +39,14 @@ namespace Enums
                     _height = value;
             }
         }
+
         IPrinter Printer;
 
         public Rectangle(double x, double y, double width, double height)
         {
+            Printer = new ConsolePrinter();
             X = x;
             Y = y;
-            Printer = new ConsolePrinter();
             if (width <= 0)
                 throw new ArgumentException("Width sould be greater than 0","width");
             _width = width;

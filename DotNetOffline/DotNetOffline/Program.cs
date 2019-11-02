@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Enums;
 using ServiceClasses;
 using Excel;
+using System.Reflection;
+using Reflection;
 
 namespace Runner
 {
@@ -17,7 +19,6 @@ namespace Runner
             MyLogger myLogger = new MyLogger();
             try
             {
-
                 try
                 {
                     taskRunner.RunTaskPerson();

@@ -19,9 +19,9 @@ namespace Serialization
         #endregion
 
         #region Costructors
-        public CarXmlDeserializer()
+        public CarXmlDeserializer(IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
         }
 
         public CarXmlDeserializer(string path)

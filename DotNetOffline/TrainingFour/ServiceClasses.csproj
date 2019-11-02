@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsolePrinter.cs" />
+    <Compile Include="ExcelPrinter.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="MyLogger.cs" />

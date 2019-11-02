@@ -80,6 +80,10 @@
       <Project>{31c7645a-7671-47e4-ae09-4870140b16e4}</Project>
       <Name>Excel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reflection\Reflection.csproj">
+      <Project>{48f0a842-00d2-4d93-a02e-f627da2f09fd}</Project>
+      <Name>Reflection</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel", "Excel\Excel.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Reflection.csproj", "{48F0A842-00D2-4D93-A02E-F627DA2F09FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36EF36F0-6CA9-406A-AC2F-E8D54533B1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F0A842-00D2-4D93-A02E-F627DA2F09FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F0A842-00D2-4D93-A02E-F627DA2F09FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F0A842-00D2-4D93-A02E-F627DA2F09FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F0A842-00D2-4D93-A02E-F627DA2F09FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

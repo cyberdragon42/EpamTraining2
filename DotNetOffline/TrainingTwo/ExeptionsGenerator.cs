@@ -10,9 +10,9 @@ namespace Exceptions
     public class ExceptionsGenerator
     {
         IPrinter Printer;
-        public ExceptionsGenerator()
+        public ExceptionsGenerator(IPrinter printer)
         {
-            Printer = new ConsolePrinter();
+            Printer = printer;
         }
 
         public void DoSomeMath(int a, int b)

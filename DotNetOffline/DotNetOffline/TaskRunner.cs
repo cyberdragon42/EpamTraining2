@@ -7,6 +7,7 @@ using Directories;
 using Enums;
 using Exceptions;
 using Excel;
+using ServiceClasses;
 
 namespace Runner
 {
@@ -72,7 +73,7 @@ namespace Runner
         public void RunTaskMonthEnum()
         {
             Console.WriteLine("Task3: Month enum");
-            EnumDisplayer enumDisplayer = new EnumDisplayer();
+            EnumDisplayer enumDisplayer = new EnumDisplayer(new ConsolePrinter());
             Console.WriteLine("Please, enter month number:");
             string monthFromConsole = Console.ReadLine();
             int convertedMonth = 0;
@@ -89,21 +90,21 @@ namespace Runner
         public void RunTaskColorsEnum()
         {
             Console.WriteLine("Task4: sort colors");
-            EnumDisplayer enumDisplayer = new EnumDisplayer();
+            EnumDisplayer enumDisplayer = new EnumDisplayer(new ConsolePrinter());
             enumDisplayer.DisplayColors();
         }
 
         public void RunTaskLongRangeEnum()
         {
             Console.WriteLine("Task5: Long range enum");
-            EnumDisplayer enumDisplayer = new EnumDisplayer();
+            EnumDisplayer enumDisplayer = new EnumDisplayer(new ConsolePrinter());
             enumDisplayer.DisplayLongRange();
         }
 
         public void RunTaskStackOverflowAndIndexOutOfRangeExceptions()
         {
             Console.WriteLine("Task6: exceptions");
-            ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator();
+            ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator(new ConsolePrinter());
             exceptionsViewer.GenereteIndexOutOfRange(100);
             exceptionsViewer.GenerateInfiniteRecursion(8);
         }
@@ -111,7 +112,7 @@ namespace Runner
         public void RunTaskArgumentExceptions()
         {
             Console.WriteLine("Task7: argument exception");
-            ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator();
+            ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator(new ConsolePrinter());
             Console.WriteLine("Please, enter a: ");
             string aFromConsole = Console.ReadLine();
             Console.WriteLine("Please, enter b: ");
@@ -131,7 +132,7 @@ namespace Runner
         public void RunTaskVisualiseDirectory()
         {
             Console.WriteLine("Task8: directory visualiser");
-            DirectoryVisualiser directoryVisualiser = new DirectoryVisualiser();
+            DirectoryVisualiser directoryVisualiser = new DirectoryVisualiser(new ConsolePrinter(), new MyLogger());
             Console.WriteLine("Please, enter directory: ");
             string directoryFromConsole = Console.ReadLine();
             directoryVisualiser.DirectoryPath = directoryFromConsole;

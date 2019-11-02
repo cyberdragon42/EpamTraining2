@@ -12,18 +12,17 @@ namespace Excel
         public void WriteIntoExcelFile(IEnumerable<string> collection, int columnNumber, string outputFilePath)
         {
             MicrosoftExcel.Application excelApp = new MicrosoftExcel.Application();
-            MicrosoftExcel.Workbook excelWorkbook = excelApp.Workbooks.Add();
-            MicrosoftExcel.Worksheet excelWorksheet = (MicrosoftExcel.Worksheet)excelWorkbook.Sheets.Add();   
+            MicrosoftExcel.Workbook  excelWorkbook = excelApp.Workbooks.Open(outputFilePath);
+            MicrosoftExcel.Worksheet excelWorksheet = excelWorkbook.ActiveSheet;
             try
             {
                 int i = 1;
                 foreach (var cell in collection)
                 {
                     excelWorksheet.Cells[i, columnNumber] = cell;
+                    ++i;
                 }
-
-                excelApp.ActiveWorkbook.SaveAs(outputFilePath, MicrosoftExcel.XlFileFormat.xlWorkbookNormal);
-
+                excelWorkbook.Save();
                 excelWorkbook.Close();
                 excelApp.Quit();
             }

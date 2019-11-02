@@ -15,10 +15,10 @@ namespace Directories
         ILogger Logger;
 
         #region Constructors
-        public DirectoryVisualiser()
+        public DirectoryVisualiser(IPrinter printer, ILogger logger)
         {
-            Printer = new ConsolePrinter();
-            Logger = new MyLogger();
+            Printer = printer;
+            Logger = logger;
         }
         public DirectoryVisualiser(string directoryPath)
         {
