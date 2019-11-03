@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -18,21 +19,31 @@ namespace Serialization
 
         public CarBinaryDeserilizer(IPrinter printer)
         {
-            Printer = printer;
+            try
+            {
+                Printer = printer;
+                Path = ConfigurationSettings.AppSettings["binarySerializationFile"];
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public CarBinaryDeserilizer(string path)
-        {
-            Printer = new ConsolePrinter();
-            Path = path;
-        }
 
         public void Deserialize()
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            using (FileStream fs = new FileStream(Path, FileMode.Open))
+            try
             {
-                carsToDeserialize = (List<Car>)bf.Deserialize(fs);
+                BinaryFormatter bf = new BinaryFormatter();
+                using (FileStream fs = new FileStream(Path, FileMode.Open))
+                {
+                    carsToDeserialize = (List<Car>)bf.Deserialize(fs);
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
     }

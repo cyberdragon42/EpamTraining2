@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using System.IO;
 using Enums;
 using ServiceClasses;
+using System.Configuration;
 
 namespace Serialization
 {
@@ -21,15 +22,16 @@ namespace Serialization
         #region Constructors
         public CarXmlSerializer(IPrinter printer)
         {
-            Printer = printer;
-            CarsToSerialize = new List<Car>();
-        }
-
-        public CarXmlSerializer(string path, IPrinter printer)
-        {
-            Printer = printer;
-            CarsToSerialize = new List<Car>();
-            Path = path;
+            try
+            {
+                Printer = printer;
+                CarsToSerialize = new List<Car>();
+                Path = ConfigurationSettings.AppSettings["xmlSerializationFile"];
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
         #endregion
 

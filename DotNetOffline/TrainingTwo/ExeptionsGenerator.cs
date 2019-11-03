@@ -9,7 +9,7 @@ namespace Exceptions
 {
     public class ExceptionsGenerator
     {
-        IPrinter Printer;
+        private IPrinter Printer;
         public ExceptionsGenerator(IPrinter printer)
         {
             Printer = printer;

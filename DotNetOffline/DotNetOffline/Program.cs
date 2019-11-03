@@ -81,6 +81,7 @@ namespace Runner
                 taskRunner.RunTaskListsFromExcel();
                 taskRunner.RunTaskExcelDirectory();
                 taskRunner.RunTaskVisualiseDirectory();
+                taskRunner.RunTaskSearchMatchingFiles();
             }
             catch (Exception e)
             {
@@ -88,7 +89,6 @@ namespace Runner
                 myLogger.Log(e.Message);
             }
 
-            //myLogger.Read();
             Console.ReadKey();
         }
     }

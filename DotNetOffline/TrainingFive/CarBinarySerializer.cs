@@ -7,6 +7,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Enums;
 using ServiceClasses;
+using System.Configuration;
 
 namespace Serialization
 {
@@ -23,14 +24,16 @@ namespace Serialization
         {
             Printer = printer;
             CarsToSerialize = new List<Car>();
+            try
+            {
+               Path = ConfigurationSettings.AppSettings["binarySerializationFile"];
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public CarBinarySerializer(string path, IPrinter printer)
-        {
-            Printer = printer;
-            CarsToSerialize = new List<Car>();
-            Path = path;
-        }
         #endregion
 
         #region Methods
@@ -39,13 +42,20 @@ namespace Serialization
             if (CarsToSerialize.Count > 0)
             {
                 //serialize
-                BinaryFormatter bf = new BinaryFormatter();
-                using (FileStream fs = new FileStream(Path, FileMode.OpenOrCreate))
+                try
                 {
-                    foreach (var car in CarsToSerialize)
+                    BinaryFormatter bf = new BinaryFormatter();
+                    using (FileStream fs = new FileStream(Path, FileMode.OpenOrCreate))
                     {
-                        bf.Serialize(fs, car);
+                        foreach (var car in CarsToSerialize)
+                        {
+                            bf.Serialize(fs, car);
+                        }
                     }
+                }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message);
                 }
             }
             else       

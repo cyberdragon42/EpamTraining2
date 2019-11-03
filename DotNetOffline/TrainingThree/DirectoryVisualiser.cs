@@ -10,23 +10,21 @@ namespace Directories
 {
     public class DirectoryVisualiser
     {
-        public string DirectoryPath { get; set; }
         IPrinter Printer;
-        ILogger Logger;
 
         #region Constructors
-        public DirectoryVisualiser(IPrinter printer, ILogger logger)
+        public DirectoryVisualiser(IPrinter printer)
         {
             Printer = printer;
-            Logger = logger;
         }
         public DirectoryVisualiser(string directoryPath)
         {
             Printer = new ConsolePrinter();
-            Logger = new MyLogger();
             DirectoryPath = directoryPath;
         }
         #endregion
+
+        public string DirectoryPath { get; set; }
         public void GetListOfFiles()
         {
             try
@@ -54,10 +52,8 @@ namespace Directories
 
             catch(Exception e)
             {
-                Printer.Print(e.Message);
-                Logger.Log(e.Message);
+                throw new Exception(e.Message);
             }
         }
-
     }
 }

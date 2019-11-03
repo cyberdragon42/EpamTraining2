@@ -6,13 +6,30 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using ServiceClasses;
+using System.Configuration;
 
 namespace Serialization
 {
     public class CarJsonDeserializer:ICarDeserializer
     {
+        IPrinter Printer;
         public List<Car> carsToDeserialize { get; set; }
         public string Path { get; set; }
+
+        public CarJsonDeserializer(IPrinter printer)
+        {
+            Printer = printer;
+            carsToDeserialize = new List<Car>();
+            try
+            {
+                Path = ConfigurationSettings.AppSettings["jsonSerializationFile"];
+            }
+            catch(Exception e)
+            {
+                Printer.Print(e.Message);
+            }
+        }
 
         public void Deserialize()
         {

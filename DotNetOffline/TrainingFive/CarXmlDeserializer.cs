@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,14 +22,17 @@ namespace Serialization
         #region Costructors
         public CarXmlDeserializer(IPrinter printer)
         {
-            Printer = printer;
+            try
+            {
+                Printer = printer;
+                Path = ConfigurationSettings.AppSettings["xmlSerializationFile"];
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public CarXmlDeserializer(string path)
-        {
-            Printer = new ConsolePrinter();
-            Path = path;
-        }
         #endregion
 
         #region Methods
@@ -38,17 +42,6 @@ namespace Serialization
             using (FileStream fs = new FileStream(Path, FileMode.Open))
             {
                 carsToDeserialize = (List<Car>)serializer.Deserialize(fs);
-            }
-        }
-
-        public void DisplayDeserializedCars()
-        {
-            if(carsToDeserialize.Count>0)
-            {
-                foreach(var car in carsToDeserialize)
-                {
-
-                }
             }
         }
 

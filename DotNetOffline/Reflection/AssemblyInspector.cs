@@ -4,39 +4,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-
+using ServiceClasses;
+using System.Configuration;
 
 namespace Reflection
 {
     public class AssemblyInspector
     {
         private string AssemblyPath;
+        IPrinter Printer;
 
-        public AssemblyInspector(string assemblyPath)
+        public AssemblyInspector(IPrinter printer)
         {
-            AssemblyPath = assemblyPath;
+            try
+            {
+                AssemblyPath = ConfigurationSettings.AppSettings["targetAssembly"];
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public void DisplayAssemblyInfo()
         {
-            Assembly targetAssembly = Assembly.LoadFrom(AssemblyPath);
-            Type[] targetAssemblyTypes = targetAssembly.GetExportedTypes();
-            foreach(var type in targetAssemblyTypes)
+            try
             {
-                Console.WriteLine();
-                Console.WriteLine(type.Name);
-                Console.WriteLine("methods: ");
-
-                foreach (var methods in type.GetMethods())
+                Assembly targetAssembly = Assembly.LoadFrom(AssemblyPath);
+                Type[] targetAssemblyTypes = targetAssembly.GetExportedTypes();
+                Printer.Print(targetAssembly.FullName);
+                foreach (var type in targetAssemblyTypes)
                 {
-                    Console.WriteLine(methods.Name);
-                }
-                Console.WriteLine("fields: ");
+                    Printer.Print(type.Name);
+                    Printer.Print("methods: ");
+                    foreach (var methods in type.GetMethods())
+                    {
+                        Printer.Print(methods.Name);
+                    }
 
-                foreach (var fields in type.GetFields())
-                {
-                    Console.WriteLine(fields.Name);
+                    Printer.Print("fields: ");
+                    foreach (var fields in type.GetFields())
+                    {
+                        Printer.Print(fields.Name);
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
     }

@@ -11,17 +11,14 @@ namespace Calculator
 {
     public class FileCalc : ICalc
     {
+        #region Fields
         private double X;
         private double Y;
         private double Result;
         private char Op;
+        #endregion
 
-        private ILogger Logger;
-        public FileCalc()
-        {
-            Logger = new MyLogger();
-        }
-
+        #region Methods
         public double Calculation(double x, double y, char op)
         {
             double result;
@@ -56,11 +53,18 @@ namespace Calculator
 
         public bool ReadInput()
         {
-            string stringParameters;
-            string calcReadFilePath = ConfigurationSettings.AppSettings["calcReadFilePath"];
-            using (StreamReader sr = new StreamReader(calcReadFilePath, true))
+            string stringParameters="";
+            try
             {
-                stringParameters = sr.ReadLine();
+                string calcReadFilePath = ConfigurationSettings.AppSettings["calcReadFilePath"];
+                using (StreamReader sr = new StreamReader(calcReadFilePath, true))
+                {
+                    stringParameters = sr.ReadLine();
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
 
             string[] splittedParameters = stringParameters.Split(' ');
@@ -85,8 +89,9 @@ namespace Calculator
 
             catch (Exception e)
             {
-                Logger.Log(e.Message);
+                throw new Exception(e.Message);
             }
         }
+        #endregion
     }
 }

@@ -5,24 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
-
+using System.Configuration;
+using ServiceClasses;
 
 namespace Serialization
 {
     public class CarJsonSerializer:ICarSerializer
     {
+        IPrinter Printer;
         public List<Car> CarsToSerialize { get; set; }
         public string Path { get; set; }
 
-        public CarJsonSerializer()
+        public CarJsonSerializer(IPrinter printer)
         {
-            CarsToSerialize = new List<Car>();
-        }
-
-        public CarJsonSerializer(string path)
-        {
-            CarsToSerialize = new List<Car>();
-            Path = path;
+            try
+            {
+                CarsToSerialize = new List<Car>();
+                Printer = printer;
+                Path = ConfigurationSettings.AppSettings["jsonSerializationFile"];
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public void Serialize()
@@ -38,6 +43,10 @@ namespace Serialization
                         sw.WriteLine(json);
                     }
                 }
+            }
+            else
+            {
+                Printer.Print("Target can't be serialized because the list of cars is emty");
             }
         }
     }

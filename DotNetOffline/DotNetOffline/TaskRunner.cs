@@ -15,7 +15,7 @@ namespace Runner
     {
         public void RunTaskPerson()
         {
-            Console.WriteLine("Task1: Person");
+            Console.WriteLine("____________Task Person____________");
 
             Console.WriteLine("Please, enter name of person: ");
             string nameFromConsole = Console.ReadLine();
@@ -49,7 +49,7 @@ namespace Runner
 
         public void RunTaskRectangle()
         {
-            Console.WriteLine("Task2: rectangle");
+            Console.WriteLine("____________Task Rectangle____________");
 
             Console.WriteLine("Please, enter rectangle width: ");
             string widthFromConsole = Console.ReadLine();
@@ -72,7 +72,7 @@ namespace Runner
 
         public void RunTaskMonthEnum()
         {
-            Console.WriteLine("Task3: Month enum");
+            Console.WriteLine("____________Task Month Enum____________");
             EnumDisplayer enumDisplayer = new EnumDisplayer(new ConsolePrinter());
             Console.WriteLine("Please, enter month number:");
             string monthFromConsole = Console.ReadLine();
@@ -89,21 +89,21 @@ namespace Runner
 
         public void RunTaskColorsEnum()
         {
-            Console.WriteLine("Task4: sort colors");
+            Console.WriteLine("____________Task Sort Colors____________");
             EnumDisplayer enumDisplayer = new EnumDisplayer(new ConsolePrinter());
             enumDisplayer.DisplayColors();
         }
 
         public void RunTaskLongRangeEnum()
         {
-            Console.WriteLine("Task5: Long range enum");
+            Console.WriteLine("____________Task Long Range Enum____________");
             EnumDisplayer enumDisplayer = new EnumDisplayer(new ConsolePrinter());
             enumDisplayer.DisplayLongRange();
         }
 
         public void RunTaskStackOverflowAndIndexOutOfRangeExceptions()
         {
-            Console.WriteLine("Task6: exceptions");
+            Console.WriteLine("____________Task Exceptions____________");
             ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator(new ConsolePrinter());
             exceptionsViewer.GenereteIndexOutOfRange(100);
             exceptionsViewer.GenerateInfiniteRecursion(8);
@@ -111,7 +111,7 @@ namespace Runner
 
         public void RunTaskArgumentExceptions()
         {
-            Console.WriteLine("Task7: argument exception");
+            Console.WriteLine("____________Task Argument Exception____________");
             ExceptionsGenerator exceptionsViewer = new ExceptionsGenerator(new ConsolePrinter());
             Console.WriteLine("Please, enter a: ");
             string aFromConsole = Console.ReadLine();
@@ -131,17 +131,26 @@ namespace Runner
 
         public void RunTaskVisualiseDirectory()
         {
-            Console.WriteLine("Task8: directory visualiser");
-            DirectoryVisualiser directoryVisualiser = new DirectoryVisualiser(new ConsolePrinter(), new MyLogger());
+            Console.WriteLine("____________Task Directory Visualiser____________");
+            DirectoryVisualiser directoryVisualiser = new DirectoryVisualiser(new ConsolePrinter());
             Console.WriteLine("Please, enter directory: ");
             string directoryFromConsole = Console.ReadLine();
             directoryVisualiser.DirectoryPath = directoryFromConsole;
             directoryVisualiser.GetListOfFiles();
         }
 
+        public void RunTaskSearchMatchingFiles()
+        {
+            Console.WriteLine("____________Task Matching Files Searcher____________");
+            FileSearcher fileSearcher = new FileSearcher(new ConsolePrinter());
+            Console.WriteLine("Please, enter fragment of file name: ");
+            string nameFromConsole = Console.ReadLine();
+            fileSearcher.SearchMatchingFiles(nameFromConsole);
+        }
+
         public void RunTaskListsFromExcel()
         {
-            Console.WriteLine("Excel collections displayer");
+            Console.WriteLine("____________Task Excel Collections Displayer____________");
             ExcelCollectionDisplayer excelCollectionDisplayer = new ExcelCollectionDisplayer();
             excelCollectionDisplayer.ReadCollections();
             excelCollectionDisplayer.WriteCollections();
@@ -149,7 +158,7 @@ namespace Runner
 
         public void RunTaskExcelDirectory()
         {
-            Console.WriteLine("Directory excel displayer");
+            Console.WriteLine("____________Task Directory Excel Displayer____________");
             DirectoryCollectionDisplayer directoryCollectionDisplayer = new DirectoryCollectionDisplayer();
             directoryCollectionDisplayer.ReadCollections();
             directoryCollectionDisplayer.GetUniqueValues();

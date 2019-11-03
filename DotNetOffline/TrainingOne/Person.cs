@@ -9,7 +9,20 @@ namespace Enums
 {
     public struct Person
     {
+
+        public IPrinter Printer;
         private int _age;
+        public Person(string name, string surname, int age)
+        {
+            Name = name;
+            Surname = surname;
+            Printer = new ConsolePrinter();
+            if (age <= 0)
+                throw new ArgumentException("Age should be greater than 0","age");
+            _age = age;
+        }
+
+        #region Properties
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age
@@ -25,17 +38,7 @@ namespace Enums
                     _age = value;
             }
         }
-        public IPrinter Printer;
-
-        public Person(string name, string surname, int age)
-        {
-            Name = name;
-            Surname = surname;
-            Printer = new ConsolePrinter();
-            if (age <= 0)
-                throw new ArgumentException("Age should be greater than 0","age");
-            _age = age;
-        }
+        #endregion
 
         public void CompareAges(int n)
         {

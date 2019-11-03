@@ -8,11 +8,14 @@ namespace Calculator
 {
     public class ConsoleCalc:ICalc
     {
+        #region Fields
         private double X;
         private double Y;
         private double Result;
         private char Op;
+        #endregion
 
+        #region Methods
         public double Calculation(double x, double y, char op)
         {
             double result;
@@ -53,7 +56,7 @@ namespace Calculator
             bool isYCorrect = Double.TryParse(Console.ReadLine(), out Y);
             Console.WriteLine("Please,enter operation:");
             bool isOpCorrect = Char.TryParse(Console.ReadKey().ToString(), out Op);
-            if (isXCorrect && isYCorrect)
+            if (isXCorrect && isYCorrect && isOpCorrect)
                 return true;
             return false;
         }
@@ -62,5 +65,6 @@ namespace Calculator
         {
             Console.WriteLine("Result of calculation: " + Result);
         }
+        #endregion
     }
 }

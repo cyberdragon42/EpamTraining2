@@ -11,42 +11,47 @@ namespace Directories
 {
     public class FileSearcher
     {
-        public string DirectoryPath { get; set; }
-        private List<FileInfo> MatchingFiles;
         public IPrinter Printer;
-        public ILogger Logger;
+        private List<FileInfo> MatchingFiles;
 
-        public FileSearcher(IPrinter printer, ILogger logger)
+        public FileSearcher(IPrinter printer)
         {
             Printer = printer;
-            Logger = logger;
             MatchingFiles = new List<FileInfo>();
         }
 
+        public string DirectoryPath { get; set; }
         public void SearchMatchingFiles(string nameFragment)
         {
-            DirectoryInfo directory = new DirectoryInfo(DirectoryPath);
-            FileInfo[] files = directory.GetFiles();
-
-            foreach (var file in files)
+            try
             {
-                if (file.Name.Contains(nameFragment) && file.Extension == ".txt")
+                DirectoryInfo directory = new DirectoryInfo(DirectoryPath);
+                FileInfo[] files = directory.GetFiles();
+
+                foreach (var file in files)
                 {
-                    MatchingFiles.Add(file);
+                    if (file.Name.Contains(nameFragment) && file.Extension == ".txt")
+                    {
+                        MatchingFiles.Add(file);
+                    }
+                }
+
+                if (MatchingFiles.Count == 0)
+                {
+                    Printer.Print("No files found");
+                }
+                else
+                {
+                    Printer.Print("Matching text files: ");
+                    foreach (var file in MatchingFiles)
+                    {
+                        Printer.Print(file.Name);
+                    }
                 }
             }
-
-            if (MatchingFiles.Count == 0)
+            catch(Exception e)
             {
-                Printer.Print("No files found");
-            }
-            else
-            {
-                Printer.Print("Matching text files: ");
-                foreach (var file in MatchingFiles)
-                {
-                    Printer.Print(file.Name);
-                }
+                throw new Exception(e.Message);
             }
 
         }

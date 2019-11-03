@@ -11,6 +11,22 @@ namespace Enums
     {
         private double _width;
         private double _height;
+        private IPrinter Printer;
+
+        public Rectangle(double x, double y, double width, double height)
+        {
+            Printer = new ConsolePrinter();
+            X = x;
+            Y = y;
+            if (width <= 0)
+                throw new ArgumentException("Width sould be greater than 0","width");
+            _width = width;
+            if (height <= 0)
+                throw new ArgumentException("Height sould be greater than 0","height");
+            _height = height;
+        }
+
+        #region Properties
         public double X { get; set; }
         public double Y { get; set; }
         public double Width
@@ -40,21 +56,7 @@ namespace Enums
             }
         }
 
-        IPrinter Printer;
-
-        public Rectangle(double x, double y, double width, double height)
-        {
-            Printer = new ConsolePrinter();
-            X = x;
-            Y = y;
-            if (width <= 0)
-                throw new ArgumentException("Width sould be greater than 0","width");
-            _width = width;
-            if (height <= 0)
-                throw new ArgumentException("Height sould be greater than 0","height");
-            _height = height;
-        }
-
+        #endregion
         public void Perimeter()
         {
             double perimeter = Width * 2 + Height * 2;

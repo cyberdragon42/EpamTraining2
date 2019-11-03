@@ -11,8 +11,8 @@ namespace Excel
 {
     public class DirectoryCollectionDisplayer:ICollectionReader,ICollectionWriter
     {
-        IPrinter Printer;
-        ExcelWriter excelWriter;
+        private IPrinter Printer;
+        private ExcelWriter excelWriter;
         private string OutputFilePath;
         private string FirstDirectoryPath;
         private string SecondDirectoryPath;

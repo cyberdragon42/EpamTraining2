@@ -10,13 +10,13 @@ namespace ServiceClasses
 {
     public class MyLogger : ILogger
     {
-        private string LogFilePath = ConfigurationSettings.AppSettings["LogFilePath"].ToString();
-
-        IPrinter Printer;
+        private string LogFilePath;
+        private IPrinter Printer;
 
         public MyLogger()
         {
             Printer = new ConsolePrinter();
+            LogFilePath = ConfigurationSettings.AppSettings["LogFilePath"].ToString();
         }
 
         public void Read()

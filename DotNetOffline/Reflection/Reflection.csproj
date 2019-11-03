@@ -44,5 +44,11 @@
     <Compile Include="AssemblyInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrainingFour\ServiceClasses.csproj">
+      <Project>{BFF686A6-8086-4091-ADBD-FB6FE87AE2D5}</Project>
+      <Name>ServiceClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
