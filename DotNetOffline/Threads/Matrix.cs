@@ -4,56 +4,72 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ServiceClasses;
 
 namespace Threads
 {
     public class Matrix
     {
+        private IPrinter Printer;
         private static Random rand;
-        private int m, n,k, Sum;
         private int[,] Array;
-        public int[] temp = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-        public int sum1, sum2;
+        private int M, N, K, Sum;
 
-        public Matrix(int m, int n)
+        public Matrix(IPrinter printer,int m, int n, int k)
         {
-            Array = new int[m, n];
+            Array = new int[M, N];
             InitializeArrayWithRandomNumbers();
-            sum1 = 0;
+            Printer = printer;
+            M = m;
+            N = n;
+            rand = new Random();
+            Sum = 0;
         }
 
         public void CountSumWithThreads()
         {
-            Thread thread1 = new Thread(new ParameterizedThreadStart(Temp));
-            thread1.Start(5);
-            Console.WriteLine(sum1);
-
-            Thread thread2 = new Thread(new ParameterizedThreadStart(Temp));
-            thread2.Start(9);
-
-        }
-
-        public void Temp(object right)
-        {
-            sum1 = 0;
-            int r = (int)right;
-            for(int i=0;i<r;++i)
+            for (int i = 0; i < M; i += K)
             {
-                sum1 += temp[i];
+                Thread thread = new Thread(new ParameterizedThreadStart(CountSumOfSection));
+                thread.Start(new ThreadParameters(i));
             }
-
-            Console.WriteLine("sum from 0 to " + r + " element= " + sum1);
+            Printer.Print("Sum= " + Sum);
         }
 
+        public void CountSumOfSection(object threadParameters)
+        {
+            int left = ((ThreadParameters)threadParameters).Left;
+            int right = (left + K) > M ? M : (left + K);
+            for (int i = left; i < right + K; ++i)
+            {
+                for (int j = 0; j < K; ++j)
+                {
+                    Sum += Array[i, j];
+                }
+            }
+        }
         public void InitializeArrayWithRandomNumbers()
         {
-            for(int i=0;i<n;++i)
+            for (int i = 0; i < K; ++i)
             {
-                for (int j = 0; j< m;++j)
+                for (int j = 0; j < N; ++j)
                 {
                     Array[i, j] = rand.Next(1000);
                 }
             }
         }
+
+        public void DisplayArray()
+        {
+            for (int i = 0; i < M; ++i)
+            {
+                Printer.Print(" ");
+                for (int j = 0; j < N; ++j)
+                {
+                    Printer.Print(Array[i, j].ToString());
+                }
+            }
+        }
     }
 }
+
