@@ -13,22 +13,37 @@ namespace Threads
         private IPrinter Printer;
         private static Random rand;
         private int[,] Array;
-        private int M, N, K, Sum;
+        private int M, N, K, Sum, Step;
+
 
         public Matrix(IPrinter printer,int m, int n, int k)
         {
-            Array = new int[M, N];
-            InitializeArrayWithRandomNumbers();
-            Printer = printer;
-            M = m;
-            N = n;
-            rand = new Random();
-            Sum = 0;
+            if (!ValidateParameters(m, n, k))
+                throw new ArgumentException("Invalid parameters for matrix");
+            else
+            {
+                Array = new int[M, N];
+                InitializeArrayWithRandomNumbers();
+                Printer = printer;
+                M = m;
+                N = n;
+                rand = new Random();
+                Sum = 0;
+                Step = M / K;
+            }
+        }
+
+        public bool ValidateParameters(int m,int n,int k)
+        {
+            if (m <= 0 || n <= 0 || k > m)
+                return false;
+            return true;
+
         }
 
         public void CountSumWithThreads()
         {
-            for (int i = 0; i < M; i += K)
+            for (int i = 0; i < M; i += Step)
             {
                 Thread thread = new Thread(new ParameterizedThreadStart(CountSumOfSection));
                 thread.Start(new ThreadParameters(i));
@@ -39,10 +54,10 @@ namespace Threads
         public void CountSumOfSection(object threadParameters)
         {
             int left = ((ThreadParameters)threadParameters).Left;
-            int right = (left + K) > M ? M : (left + K);
-            for (int i = left; i < right + K; ++i)
+            int right = (left + Step) > M ? M : (left + Step);
+            for (int i = left; i < right + Step; ++i)
             {
-                for (int j = 0; j < K; ++j)
+                for (int j = 0; j < N; ++j)
                 {
                     Sum += Array[i, j];
                 }
@@ -50,7 +65,7 @@ namespace Threads
         }
         public void InitializeArrayWithRandomNumbers()
         {
-            for (int i = 0; i < K; ++i)
+            for (int i = 0; i < M; ++i)
             {
                 for (int j = 0; j < N; ++j)
                 {
