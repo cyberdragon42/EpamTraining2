@@ -34,12 +34,8 @@ namespace TrainingSerialization
         {
             using (StreamReader sr = new StreamReader(Path))
             {
-                while (!sr.EndOfStream)
-                {
-                    string stringCar = sr.ReadLine();
-                    Car restortedCar = JsonSerializer.Deserialize<Car>(stringCar);
-                    carsToDeserialize.Add(restortedCar);
-                }
+                string stringCars = sr.ReadToEnd();
+                carsToDeserialize = JsonSerializer.Deserialize<List<Car>>(stringCars);
             }
         }
     }

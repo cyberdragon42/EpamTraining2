@@ -37,11 +37,8 @@ namespace TrainingSerialization
                 //serialize
                 using (StreamWriter sw = new StreamWriter(Path, false, System.Text.Encoding.Default))
                 {
-                    foreach (var car in CarsToSerialize)
-                    {
-                        string json = JsonSerializer.Serialize<Car>(car);
-                        sw.WriteLine(json);
-                    }
+                    string json = JsonSerializer.Serialize<List<Car>>(CarsToSerialize);
+                    sw.WriteLine(json);
                 }
             }
             else

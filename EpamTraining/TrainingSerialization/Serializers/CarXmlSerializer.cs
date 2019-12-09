@@ -39,10 +39,10 @@ namespace TrainingSerialization
         {
             if (CarsToSerialize.Count > 0)
             {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Car>));
                 //serialize
                 using (FileStream fs = new FileStream(Path, FileMode.Create))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Car>));
                     serializer.Serialize(fs, CarsToSerialize);
                 }
             }

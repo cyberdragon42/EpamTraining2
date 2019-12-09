@@ -52,7 +52,7 @@ namespace TrainingThreads
                 }
                 Printer.Print("Sum= " + Sum);
             }
-            catch(Exception e)
+            catch(IndexOutOfRangeException e)
             {
                 throw e;
             }
@@ -72,7 +72,7 @@ namespace TrainingThreads
                     }
                 }
             }
-            catch(Exception e)
+            catch(IndexOutOfRangeException e)
             {
                 throw e;
             }

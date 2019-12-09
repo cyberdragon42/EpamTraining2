@@ -29,9 +29,9 @@ namespace EpamTraining2
         {
             try
             {
-                RunTaskBinary();
                 RunTaskJson();
                 RunTaskXml();
+                RunTaskBinary();
             }
             catch(Exception e)
             {
