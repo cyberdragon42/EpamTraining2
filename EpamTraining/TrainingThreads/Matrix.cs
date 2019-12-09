@@ -43,35 +43,56 @@ namespace TrainingThreads
 
         public void CountSumWithThreads()
         {
-            for (int i = 0; i < M; i += Step)
+            try
             {
-                Thread thread = new Thread(new ParameterizedThreadStart(CountSumOfSection));
-                thread.Start(new ThreadParameters(i));
+                for (int i = 0; i < M; i += Step)
+                {
+                    Thread thread = new Thread(new ParameterizedThreadStart(CountSumOfSection));
+                    thread.Start(new ThreadParameters(i));
+                }
+                Printer.Print("Sum= " + Sum);
             }
-            Printer.Print("Sum= " + Sum);
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public void CountSumOfSection(object threadParameters)
         {
-            int left = ((ThreadParameters)threadParameters).Left;
-            int right = (left + Step) > M ? M : (left + Step);
-            for (int i = left; i < right + Step; ++i)
+            try
             {
-                for (int j = 0; j < M; ++j)
+                int left = ((ThreadParameters)threadParameters).Left;
+                int right = (left + Step) > M ? M : (left + Step);
+                for (int i = left; i < right + Step; ++i)
                 {
-                    Sum += Array[i, j];
+                    for (int j = 0; j < M; ++j)
+                    {
+                        Sum += Array[i, j];
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                throw e;
             }
         }
 
         public void InitializeArrayWithRandomNumbers()
         {
-            for (int i = 0; i < N; ++i)
+            try
             {
-                for (int j = 0; j < M; ++j)
+                for (int i = 0; i < N; ++i)
                 {
-                    Array[i, j] = rand.Next(1000);
+                    for (int j = 0; j < M; ++j)
+                    {
+                        Array[i, j] = rand.Next(1000);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }
