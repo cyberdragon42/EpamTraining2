@@ -23,12 +23,12 @@ namespace EpamTraining2
                 RunTaskStackOverflowAndIndexOutofRangeExceptions();
             }
 
-            catch (IndexOutOfRangeException e)
+            catch (IndexOutOfRangeException)
             {
                 Console.WriteLine("Index out of range exception");
                 Logger.Log("Index out of range exception");
             }
-            catch (StackOverflowException e)
+            catch (StackOverflowException)
             {
                 Console.WriteLine("Stack overflow exception");
                 Logger.Log("Stack overflow exception");

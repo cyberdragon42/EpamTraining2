@@ -46,10 +46,7 @@ namespace TrainingSerialization
                     BinaryFormatter bf = new BinaryFormatter();
                     using (FileStream fs = new FileStream(Path, FileMode.OpenOrCreate))
                     {
-                        foreach (var car in CarsToSerialize)
-                        {
-                            bf.Serialize(fs, car);
-                        }
+                            bf.Serialize(fs, CarsToSerialize);
                     }
                 }
                 catch (Exception e)
