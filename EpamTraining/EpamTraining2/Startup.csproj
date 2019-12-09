@@ -80,6 +80,7 @@
     <Compile Include="Runners\ExcelRunner.cs" />
     <Compile Include="Runners\ExceptionsRunner.cs" />
     <Compile Include="Runners\ReflectionRunner.cs" />
+    <Compile Include="Runners\SerializationRunner.cs" />
     <Compile Include="Runners\StyleCopRunner.cs" />
     <Compile Include="Runners\ThreadsRunner.cs" />
   </ItemGroup>

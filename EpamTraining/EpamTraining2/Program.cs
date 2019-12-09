@@ -20,6 +20,7 @@ namespace EpamTraining2
         {
             List<IRunner> runners = new List<IRunner>()
             {
+                new SerializationRunner(),
                 new EnumsRunner(),
                 new ExceptionsRunner(),
                 new DirectoriesRunner(),
@@ -27,6 +28,7 @@ namespace EpamTraining2
                 new ReflectionRunner(),
                 new StyleCopRunner(),
                 new ExcelRunner(),
+                new SerializationRunner(),
                 new ThreadsRunner()
             };
 
