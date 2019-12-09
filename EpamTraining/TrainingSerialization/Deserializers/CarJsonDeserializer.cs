@@ -32,11 +32,23 @@ namespace TrainingSerialization
 
         public void Deserialize()
         {
-            using (StreamReader sr = new StreamReader(Path))
+            try
             {
-                string stringCars = sr.ReadToEnd();
-                carsToDeserialize = JsonSerializer.Deserialize<List<Car>>(stringCars);
+                using (StreamReader sr = new StreamReader(Path))
+                {
+                    string stringCars = sr.ReadToEnd();
+                    carsToDeserialize = JsonSerializer.Deserialize<List<Car>>(stringCars);
+                }
+                foreach (var car in carsToDeserialize)
+                {
+                    Printer.Print(car.DisplayCar());
+                }
             }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
         }
     }
 }

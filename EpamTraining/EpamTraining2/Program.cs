@@ -35,7 +35,6 @@ namespace EpamTraining2
             {
                 runner.Run();
             }
-
             Console.ReadKey();
         }
     }

@@ -24,7 +24,7 @@ namespace EpamTraining2
                 Matrix matrix = new Matrix(new ConsolePrinter(),100,100,4);
                 matrix.CountSumWithThreads();
             }
-            catch(IndexOutOfRangeException e)
+            catch(Exception e)
             {
                 Console.WriteLine(e.Message);
                 Logger.Log(e.Message);

@@ -21,5 +21,10 @@ namespace TrainingSerialization
             Quantity = quantity;
             Total = total;
         }
+
+        public string DisplayCar()
+        {
+            return String.Format("Car id: {0}, price: {1}, quantity{2}, total: {3}", Carld,Price,Quantity,Total);
+        }
     }
 }

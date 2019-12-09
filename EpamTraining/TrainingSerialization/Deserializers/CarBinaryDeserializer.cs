@@ -39,6 +39,11 @@ namespace TrainingSerialization
                     {
                        carsToDeserialize = (List<Car>)bf.Deserialize(fs);
                     }
+
+                    foreach (var car in carsToDeserialize)
+                    {
+                       Printer.Print(car.DisplayCar());
+                    }
                 }
                 catch (Exception e)
                 {
