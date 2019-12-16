@@ -26,7 +26,7 @@ namespace TrainingSerialization
                 }
                 catch (Exception e)
                 {
-                    throw new Exception(e.Message);
+                throw e;
                 }
             }
 
@@ -47,7 +47,7 @@ namespace TrainingSerialization
                 }
                 catch (Exception e)
                 {
-                    throw new Exception(e.Message);
+                throw e;
                 }
             }
         }
