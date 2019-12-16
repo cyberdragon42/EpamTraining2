@@ -58,9 +58,9 @@ namespace TrainingStyleCop
             return new Rectangle(topLeft, bottomRight);
         }
 
-        public void ShowRectangle(Rectangle rectangle)
+        public void ShowRectangle()
         {
-            Printer.Print(String.Format("A: ({0},{1}); D: ({2},{3})",rectangle.A.X, rectangle.A.Y, rectangle.D.X, rectangle.D.Y));
+            Printer.Print(String.Format("A: ({0},{1}); D: ({2},{3})",A.X, A.Y, D.X, D.Y));
         }
 
         #endregion
