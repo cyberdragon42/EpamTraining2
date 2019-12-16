@@ -21,8 +21,10 @@ namespace EpamTraining2
             try
             {
                 Console.WriteLine("____________Task Threading____________");
-                Matrix matrix = new Matrix(new ConsolePrinter(),100,100,4);
+                Console.WriteLine("4 threads are created for matrix 100x100");
+                Matrix matrix = new Matrix(100,4);
                 matrix.CountSumWithThreads();
+                Console.WriteLine("Sum= " + matrix.Sum);
             }
             catch(Exception e)
             {
